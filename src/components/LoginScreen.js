@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-spinners/HashLoader";
+import {useHistory} from "react-router-dom";
 
 
 function LoginScreen() {
@@ -25,6 +26,8 @@ function LoginScreen() {
     const [loginResult, setLoginResult] = useState(null);
     const [showSearching, setShowSearching] = useState(false);
 
+    const history = useHistory()
+
     const sendLoginData = () => {
         setShowSearching(true);
         fetch("/login/", {
@@ -42,6 +45,7 @@ function LoginScreen() {
             if (response.status === 200) {
                 setAlertClass("alert alert-success");
                 setLoginResult("Login successful");
+                history.push("/list");
             } else {
                 setAlertClass("alert alert-danger");
                 setLoginResult("Bad credentials");
@@ -65,7 +69,7 @@ function LoginScreen() {
                     color="#00BFFF"
                     height={800}
                     width={800}
-                    timeout={3000} //3 secs
+                    timeout={3000}
                     css={{position: "absolute", left: "50%", top: "40vh"}}
                 />
             </div>
@@ -91,14 +95,16 @@ function LoginScreen() {
                     <input type="password" className="form-control" placeholder="Enter password"
                            onChange={(event) => {
                                setPassword(event.target.value);
-                           }}
+                           }} onKeyUp={key => {
+                        if (key.key === "Enter") {
+                            sendLoginData();
+                        }
+                    }}
                            value={password}
                     />
                 </div>
                 <button type="submit" className="btn btn-primary btn-block" onClick={sendLoginData}>Login</button>
             </div>
-
-
         </div>
 
     );

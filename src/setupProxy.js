@@ -15,4 +15,8 @@ module.exports = function (app) {
         target: "http://localhost:8000",
         changeOrigin: true
     }));
+    app.use("/api/people", proxy({
+        target: "http://localhost:8000",
+        changeOrigin: true
+    }));
 }
