@@ -19,4 +19,12 @@ module.exports = function (app) {
         target: "http://localhost:8000",
         changeOrigin: true
     }));
+    app.use("/register_person/", proxy({
+        target: "http://localhost:8000",
+        changeOrigin: true
+    }));
+    app.use("/recognize_person/", proxy({
+        target: "http://localhost:8000",
+        changeOrigin: true
+    }));
 }
