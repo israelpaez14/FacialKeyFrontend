@@ -1,3 +1,11 @@
+# About this repo
+This is a frontend application writen in JS using React. This application was writen to be used with the https://github.com/israelpaez14/FacialRecognitionBackend.
+
+# Proxy routes
+
+All the requests(in developmet mode) are proxied to a local service running on port 8000 so if you want to use this you have to have the backend running in the 8000 port
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
