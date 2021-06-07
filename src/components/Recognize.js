@@ -1,6 +1,8 @@
 import Navbar from "./Navbar";
 import React, {useState} from "react";
 import Webcam from "react-webcam";
+import {useHistory} from "react-router-dom";
+
 
 function Recognize() {
     const videoConstraints = {
@@ -18,14 +20,13 @@ function Recognize() {
 
     const [name, setName] = useState("");
     const [recognizing, setRecognizing] = useState(false);
+    const history = useHistory();
     let interval = null;
     const startRecognition = () => {
         console.log("Starting INTERVAL");
         setRecognizing(true);
         interval = window.setInterval(() => {
-            if (!recognizing) {
-                clearInterval(interval);
-            }
+
             fetch("/recognize_person/", {
                 method: "POST",
                 headers: {
@@ -46,7 +47,7 @@ function Recognize() {
                 return response.json();
             }).then((json) => {
                 console.log(json);
-                setName(json.name);
+                setName(json.name.replaceAll("dataset/",""));
             }).catch(() => {
                 console.log("Network error");
             });
@@ -58,6 +59,7 @@ function Recognize() {
     const stopRecognition = () => {
         setRecognizing(false);
         setName("");
+        history.push("/recognize")
     }
 
     return (
