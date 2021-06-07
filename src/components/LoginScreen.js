@@ -60,7 +60,6 @@ function LoginScreen() {
         })
 
     };
-
     return (
         <div>
             <div style={showSearching ? styles.loader : {display: "none"}}>
