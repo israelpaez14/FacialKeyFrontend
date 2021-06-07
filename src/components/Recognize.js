@@ -58,8 +58,8 @@ function Recognize() {
 
     const stopRecognition = () => {
         setRecognizing(false);
-        setName("");
-        history.push("/recognize")
+        setName("")
+        window.location = "/recognize";
     }
 
     return (
