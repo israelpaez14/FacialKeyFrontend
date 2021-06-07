@@ -22,7 +22,11 @@ function Navbar() {
                     </li>
                 </ul>
                 <span className="navbar-text">
-      Navbar text with an inline element
+<a href="https://github.com/israelpaez14/FacialKeyFrontend">
+    https://github.com/israelpaez14/FacialKeyFrontend
+
+
+</a>
     </span>
             </div>
         </nav>

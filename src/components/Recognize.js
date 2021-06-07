@@ -46,7 +46,7 @@ function Recognize() {
                 return response.json();
             }).then((json) => {
                 console.log(json);
-                setName(json.name);
+                setName(json.name.replaceAll("dataset/",""));
             }).catch(() => {
                 console.log("Network error");
             });
